@@ -1,0 +1,79 @@
+.main-footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+  padding: 60px 0 20px 0;
+  border-top: 1px solid var(--card-border);
+}
+
+.main-footer h5 {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.footer-about p {
+  font-size: 0.9rem;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+  padding-left: 5px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--card-bg-darker);
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transform: translateY(-3px);
+}
+
+.footer-newsletter .form-control {
+  border-radius: 20px 0 0 20px;
+  border-right: none;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+}
+
+.footer-newsletter .btn-success {
+  border-radius: 0 20px 20px 0;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: background-color 0.3s ease;
+}
+
+.footer-newsletter .btn-success:hover {
+  filter: brightness(90%);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--card-border);
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}

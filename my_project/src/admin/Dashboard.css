@@ -1,0 +1,167 @@
+/* Dashboard.css */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: sans-serif;
+  position: relative;
+  background-color: var(--background-color);
+}
+
+/* Content Area */
+.dashboard-content {
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+
+.dashboard-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.dashboard-header p {
+  margin: 0.5rem 0 0 0;
+  color: var(--text-color);
+}
+
+.dashboard-home {
+  padding-top: 2rem;
+}
+
+.stat-card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--card-bg);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.stat-card p {
+  margin: 0.5rem 0 0 0;
+  color: var(--text-color);
+}
+
+.chart-container {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+}
+
+.tip-of-the-day-card,
+.quick-links-card,
+.progress-card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+}
+
+.tip-of-the-day-card h4,
+.quick-links-card h4,
+.progress-card h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.quick-links-card a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.quick-links-card a:hover {
+  color: var(--primary-color);
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: var(--card-bg-darker);
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  width: 75%; /* Example progress */
+  background-color: var(--primary-color);
+  height: 10px;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-card small,
+.tip-of-the-day-card small {
+  color: var(--text-color);
+}
+
+.habit-tracker h2,
+.habit-tracker p {
+  color: var(--text-color);
+}
+
+.stat-card h3,
+.stat-card p {
+  color: var(--text-color);
+}
+
+.quick-links-card ul {
+  padding-left: 0;
+}
+
+.dark .stat-card,
+.dark .progress-card,
+.dark .tip-of-the-day-card,
+.dark .quick-links-card,
+.dark .chart-container {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.dark .stat-card h3,
+.dark .stat-card p,
+.dark .progress-card h4,
+.dark .progress-card small,
+.dark .tip-of-the-day-card h4,
+.dark .tip-of-the-day-card p,
+.dark .tip-of-the-day-card small,
+.dark .quick-links-card h4,
+.dark .quick-links-card a {
+  color: var(--text-color);
+}
+
+.dark .quick-links-card a:hover {
+  color: var(--primary-color);
+}
+
+.dark .text-muted {
+  color: #a0a0a0 !important;
+}

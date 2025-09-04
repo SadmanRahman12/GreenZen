@@ -1,0 +1,133 @@
+.dashboard-impact {
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.impact-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.impact-header h2 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+}
+
+.impact-header p {
+  color: var(--text-color);
+}
+
+.impact-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.metric-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.metric-icon.tree { color: #27ae60; }
+.metric-icon.water { color: #2980b9; }
+.metric-icon.recycle { color: #f39c12; }
+
+.metric-card h3 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Badges Section */
+.badges-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.badges-section h3 {
+  color: var(--text-color);
+}
+
+.badges-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  color: var(--text-color);
+  text-align: center;
+}
+
+.badge p {
+  color: var(--text-color);
+}
+
+.badge.earned {
+  color: #2ecc71;
+}
+
+.badge-icon {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.badge.earned .badge-icon {
+  transform: scale(1.1);
+}
+
+/* Progress Section */
+.progress-section {
+  text-align: center;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.progress-section p {
+  color: var(--text-color);
+}
+
+.progress-bar-container {
+  width: 80%;
+  margin: 1rem auto;
+  background: var(--card-bg-darker);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 20px;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}

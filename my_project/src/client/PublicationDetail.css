@@ -1,0 +1,22 @@
+.publication-detail-container {
+  padding: 20px;
+}
+
+.publication-detail-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .publication-detail-container {
+    padding: 10px;
+  }
+
+  .publication-detail-image {
+    max-width: 100%;
+  }
+}

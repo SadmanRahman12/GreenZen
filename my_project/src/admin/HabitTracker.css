@@ -1,0 +1,48 @@
+.habit-tracker {
+  padding: 20px;
+  border: 1px solid var(--card-border);
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.add-habit {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.add-habit input {
+  flex-grow: 1;
+  padding: 8px;
+}
+
+.add-habit button {
+  padding: 8px 15px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  cursor: pointer;
+}
+
+.habit-list {
+  list-style: none;
+  padding: 0;
+}
+
+.habit-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .add-habit {
+    flex-direction: column;
+  }
+
+  .add-habit input {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,301 @@
+/* AuthForms.css - Transparent card with beautiful background image */
+
+body {
+    background-color: var(--background-color); /* Fallback background color */
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    
+    background-image: url('../../public/istockphoto-1083893950-612x612.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Optional: Subtle parallax effect (requires JS for full effect, but CSS can do basic) */
+    background-attachment: fixed;
+}
+
+/* Overlay for readability and theme integration */
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--auth-bg-overlay); /* Moderate overlay for balanced transparency and contrast */
+    z-index: 0;
+}
+
+/* Remove animated background shapes as image is primary background */
+.background-shape {
+    display: none; 
+}
+
+/* Keyframe for card entry animation */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth-card {
+    background-color: var(--card-bg-transparent); /* Lightly transparent white background */
+    backdrop-filter: blur(25px); /* Increased frosted glass effect */
+    -webkit-backdrop-filter: blur(25px); /* Safari support */
+    padding: 40px;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
+    width: 100%;
+    max-width: 450px; /* Slightly wider card for more presence */
+    text-align: center;
+    border: 1px solid var(--card-bg-transparent); /* Lighter, semi-transparent border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Reintroduce transition */
+    position: relative; /* Ensure z-index works */
+    z-index: 1; /* Bring card above background pattern */
+    animation: fadeInScale 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; /* More fluid entry animation */
+}
+
+.auth-card:hover {
+    transform: translateY(-7px) perspective(1000px) rotateY(3deg); /* More pronounced lift on hover with subtle 3D */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); /* Stronger shadow on hover */
+}
+
+.auth-card .logo-container {
+    margin-bottom: 32px; /* More space for logo */
+}
+
+.auth-card h2 {
+    margin-bottom: 20px;
+    color: var(--text-color-on-dark-bg); /* White text for better contrast on dark overlay */
+    font-size: 36px; /* Larger font size */
+    font-weight: 700; /* Bold font weight */
+    letter-spacing: -1px; /* Tighter letter spacing for headings */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+.auth-card p.tagline {
+    color: var(--text-color-on-dark-bg); /* White text for better contrast */
+    margin-bottom: 32px;
+    font-size: 19px; /* Slightly larger tagline */
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+.form-group {
+    margin-bottom: 25px; /* More space between form groups */
+    text-align: left;
+    position: relative; /* For floating labels */
+}
+
+.form-group label {
+    position: absolute;
+    top: 14px; /* Initial position */
+    left: 16px;
+    color: var(--text-color-on-dark-bg); /* White color for labels */
+    font-size: 16px;
+    font-weight: 700; /* Bold */
+    pointer-events: none; /* Allow clicks through label */
+    transition: all 0.2s ease-out;
+    transform-origin: left top;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px; /* Adjusted padding */
+    border: 1px solid var(--card-border); /* Semi-transparent white border */
+    border-radius: 6px; /* Slightly more rounded inputs */
+    font-size: 16px;
+    background-color: var(--card-bg-transparent); /* Very subtle transparent background */
+    color: var(--text-color-on-dark-bg); /* White text for input */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-control::placeholder {
+    color: var(--text-color-on-dark-bg-placeholder); /* Lighter placeholder color */
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    top: 4px; /* Move up */
+    font-size: 12px; /* Smaller font */
+    color: var(--text-color-on-dark-bg); /* White color when active */
+    transform: scale(0.85); /* Shrink */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+.form-control:focus {
+    border-color: var(--primary-color); /* Light green focus border */
+    box-shadow: 0 0 0 4px var(--primary-color-shadow), 0 1px 8px var(--primary-color-shadow); /* Softer green glow with subtle lift */
+    background-color: var(--card-bg-transparent-focus); /* Slightly more opaque on focus */
+    outline: none;
+}
+
+/* Validation Feedback */
+.form-control.is-invalid {
+    border-color: #ff6347; /* Tomato red border for invalid */
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.3); /* Red glow for invalid focus */
+}
+
+.invalid-feedback {
+    color: var(--text-color-on-dark-bg); /* White for error messages */
+    font-size: 13px;
+    margin-top: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+/* Input icons */
+.input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color-on-dark-bg); /* White icon color */
+    font-size: 18px;
+    transition: color 0.2s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+.form-control:focus + label + .input-icon {
+    color: var(--text-color-on-dark-bg); /* White icon on focus */
+}
+
+.form-control.is-invalid + label + .input-icon {
+    color: #ff6347; /* Red icon for invalid */
+}
+
+.auth-button {
+    width: 100%; /* Full width button */
+    padding: 18px 28px;
+    background: linear-gradient(45deg, var(--primary-color), #66BB6A); /* Richer green gradient */
+    color: var(--background-color); /* White text for button */
+    border: none;
+    border-radius: 30px; /* Pill-shaped button */
+    font-size: 20px; /* Larger font size */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 30px rgba(76, 175, 80, 0.6); /* More prominent green shadow */
+    margin-top: 35px; /* More space above button */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Clear, but not overly aggressive, dark shadow */
+    letter-spacing: 0.8px; /* More pronounced letter spacing */
+}
+
+.auth-button:hover {
+    background: linear-gradient(45deg, #66BB6A, var(--primary-color)); /* Reverse gradient on hover */
+    transform: translateY(-5px) scale(1.02); /* More pronounced lift and subtle scale on hover */
+    box-shadow: 0 12px 40px rgba(76, 175, 80, 0.7); /* Stronger shadow on hover */
+}
+
+.auth-button:active {
+    transform: translateY(0); /* Press effect */
+    box-shadow: 0 2px 10px rgba(46, 204, 113, 0.2); /* Reduced shadow on active */
+}
+
+/* Loading spinner for button */
+.auth-button .spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.2em;
+    margin-right: 10px;
+}
+
+.auth-button.loading {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.text-center.mt-3 {
+    margin-top: 25px !important; /* Adjust margin */
+}
+
+.text-center.mt-3 a {
+    color: var(--text-color-on-dark-bg); /* White link color for contrast */
+    text-decoration: none;
+    font-weight: 700; /* Bolder link */
+    transition: text-decoration 0.2s ease, color 0.2s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.6); /* Crisp, multi-layered shadow */
+}
+
+.text-center.mt-3 a:hover {
+    text-decoration: underline;
+    color: var(--text-color-on-dark-bg); /* Slightly lighter white on hover */
+}
+
+/* Keyframe for card entry animation */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    .auth-card h2 {
+        font-size: 26px;
+    }
+
+    .auth-card p.tagline {
+        font-size: 16px;
+    }
+
+    .form-control {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+
+    .auth-button {
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 25px;
+    }
+
+    .auth-card h2 {
+        font-size: 22px;
+    }
+
+    .auth-card p.tagline {
+        font-size: 15px;
+    }
+
+    .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .auth-button {
+        padding: 12px 18px;
+        font-size: 15px;
+    }
+}

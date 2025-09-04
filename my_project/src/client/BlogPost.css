@@ -1,0 +1,23 @@
+.blog-post-section {
+    background-color: var(--background-color);
+}
+
+.blog-post-section h1 {
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.blog-post-section .text-muted {
+    font-style: italic;
+}
+
+.blog-post-section img {
+    border-radius: 15px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .blog-post-section h1 {
+        font-size: 2rem;
+    }
+}

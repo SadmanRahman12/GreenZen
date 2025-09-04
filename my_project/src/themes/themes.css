@@ -1,0 +1,43 @@
+.light {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #28a745;
+  --primary-color-light: #5cb85c;
+  --primary-color-darker: #2E7D32;
+  --primary-color-shadow: rgba(40, 167, 69, 0.4);
+  --header-bg: #f8f9fa;
+  --footer-bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --card-bg-darker: #f0f0f0;
+  --card-border: #dee2e6;
+  --tip-bg: #e9f7ef;
+  --tip-text-color: #2c3e50;
+  --auth-bg-overlay: rgba(0, 0, 0, 0.5);
+  --card-bg-transparent: rgba(255, 255, 255, 0.15);
+  --card-bg-transparent-focus: rgba(255, 255, 255, 0.25);
+  --text-color-on-dark-bg: #ffffff;
+  --text-color-on-dark-bg-placeholder: rgba(0, 0, 0, 0.7);
+  --impact-section-bg: #f8f8f8;
+}
+
+.dark {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --primary-color: #28a745;
+  --primary-color-light: #5cb85c;
+  --primary-color-darker: #2E7D32;
+  --primary-color-shadow: rgba(40, 167, 69, 0.6);
+  --header-bg: #1f1f1f;
+  --footer-bg: #1f1f1f;
+  --card-bg: #1f1f1f;
+  --card-bg-darker: #1a1a1a;
+  --card-border: #333333;
+  --tip-bg: #2a2a2a;
+  --tip-text-color: #ffffff;
+  --auth-bg-overlay: rgba(0, 0, 0, 0.6);
+  --card-bg-transparent: rgba(0, 0, 0, 0.15);
+  --card-bg-transparent-focus: rgba(0, 0, 0, 0.25);
+  --text-color-on-dark-bg: #ffffff;
+  --text-color-on-dark-bg-placeholder: rgba(255, 255, 255, 0.7);
+  --impact-section-bg: #1a1a1a;
+}
