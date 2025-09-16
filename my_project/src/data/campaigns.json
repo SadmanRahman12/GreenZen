@@ -1,0 +1,40 @@
+[
+  {
+    "id": "camp1",
+    "title": "Earth Day Challenge",
+    "description": "Join the Earth Day campaign and complete eco-friendly challenges.",
+    "category": "earth-day",
+    "banner": "https://example.com/earthday-banner.jpg",
+    "duration": 7,
+    "startDate": "2025-04-22T00:00:00Z",
+    "endDate": "2025-04-29T23:59:59Z",
+    "challenges": ["Unplug electronics when not in use", "Use a reusable water bottle"],
+    "participants": [
+      { "user": "user1", "joinedAt": "2025-04-22T08:00:00Z", "progress": { "completedChallenges": [], "totalPoints": 0 } }
+    ],
+    "rewards": {
+      "first": { "points": 500, "badge": "Campaign Winner", "description": "1st Place" },
+      "second": { "points": 300, "badge": "Campaign Runner-up", "description": "2nd Place" },
+      "third": { "points": 200, "badge": "Campaign Achiever", "description": "3rd Place" },
+      "participation": { "points": 50, "badge": "Campaign Participant", "description": "Participation" }
+    }
+  },
+  {
+    "id": "camp2",
+    "title": "Plastic-Free July",
+    "description": "Reduce plastic use for a month and earn rewards.",
+    "category": "custom",
+    "banner": "https://example.com/plasticfree-banner.jpg",
+    "duration": 30,
+    "startDate": "2025-07-01T00:00:00Z",
+    "endDate": "2025-07-31T23:59:59Z",
+    "challenges": ["Bring your own shopping bag", "Recycle paper and plastic"],
+    "participants": [],
+    "rewards": {
+      "first": { "points": 1000, "badge": "Plastic-Free Champion", "description": "1st Place" },
+      "second": { "points": 500, "badge": "Plastic-Free Runner-up", "description": "2nd Place" },
+      "third": { "points": 250, "badge": "Plastic-Free Achiever", "description": "3rd Place" },
+      "participation": { "points": 100, "badge": "Plastic-Free Participant", "description": "Participation" }
+    }
+  }
+]

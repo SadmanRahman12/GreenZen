@@ -10,12 +10,9 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "assert": "^2.1.0",
-    "axios": "^0.21.1",
     "bootstrap": "^5.3.7",
     "chart.js": "^4.5.0",
-    "customize-cra": "^1.0.0",
-        "react": "18.2.0",
+    "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-chartjs-2": "^5.3.0",
     "react-countup": "^6.5.3",
@@ -23,7 +20,7 @@
     "react-icons": "^5.5.0",
     "react-router": "6.23.1",
     "react-router-bootstrap": "^0.26.3",
-    "react-router-dom": "6.23.1",
+    "react-router-dom": "^7.7.1",
     "react-scripts": "5.0.1",
     "url": "^0.11.4",
     "util": "^0.12.5",
@@ -53,16 +50,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
-  "devDependencies": {
-    "browserify-zlib": "^0.2.0",
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.1",
-    "global": "^4.4.0",
-    "https-browserify": "^1.0.0",
-    "process": "^0.11.10",
-    "react-app-rewired": "^2.2.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0"
-  }
+  "proxy": "http://localhost:5000"
 }

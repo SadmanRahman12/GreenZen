@@ -28,46 +28,43 @@ import DashboardForum from './admin/DashboardForum';
 import AdminDashboard from './admin/AdminDashboard';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DashboardCampaigns from './admin/DashboardCampaigns';
+import DashboardChallenges from './admin/DashboardChallenges';
 
 function App() {
   return (
-    <UserProvider> {/* Wrap with UserProvider */}
-      <ThemeProvider>
-        <ThemeWrapper>
-          <Router>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
-              <Route path="/publication" element={<Publication />} />
-              <Route path="/publication/:slug" element={<PublicationDetail />} />
-              <Route path="/carbon-calculator" element={<PerfectCarbonCalculator />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/events" element={<GreenEvents />} />
-              <Route path="/forum" element={<CommunityForum />} />
-              <Route path="/forum/:id" element={<ForumPostDetail />} /> {/* New route for ForumPostDetail */}
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/dashboard" element={<Dashboard name="User" />}>
-                {console.log('Dashboard route hit.')}
-                <Route index element={<DashboardHome />} />
-                <Route path="habit-tracker" element={<HabitTracker />} />
-                <Route path="leaderboard" element={<Leaderboard />} />
-                <Route path="education" element={<DashboardEducation />} />
-                <Route path="impact" element={<DashboardImpact />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="settings" element={<Settings />} />
-                <Route path="events" element={<GreenEvents />} />
-                <Route path="carbon-calculator" element={<PerfectCarbonCalculator />} />
-                <Route path="forum" element={<DashboardForum />} />
-              </Route>
-            </Routes>
-            <Footer />
-          </Router>
-        </ThemeWrapper>
-      </ThemeProvider>
-    </UserProvider>
+    <ThemeProvider>
+      <ThemeWrapper>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/publication" element={<Publication />} />
+            <Route path="/publication/:slug" element={<PublicationDetail />} />
+            <Route path="/carbon-calculator" element={<PerfectCarbonCalculator />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/events" element={<GreenEvents />} />
+            <Route path="/forum" element={<CommunityForum />} />
+            <Route path="/dashboard" element={<Dashboard name="User" />}>
+              <Route index element={<DashboardHome />} />
+              <Route path="habit-tracker" element={<HabitTracker />} />
+              <Route path="leaderboard" element={<Leaderboard />} />
+              <Route path="education" element={<DashboardEducation />} />
+              <Route path="impact" element={<DashboardImpact />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="events" element={<GreenEvents />} />
+              <Route path="carbon-calculator" element={<PerfectCarbonCalculator />} />
+              <Route path="forum" element={<DashboardForum />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </ThemeWrapper>
+    </ThemeProvider>
   );
 }
 

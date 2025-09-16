@@ -1,0 +1,162 @@
+[
+  {
+    "title": "Unplug electronics when not in use",
+    "description": "Disconnect chargers, TVs, and other electronics to save phantom energy",
+    "category": "energy",
+    "points": 10,
+    "difficulty": "easy",
+    "icon": "fas fa-plug"
+  },
+  {
+    "title": "Use a reusable water bottle",
+    "description": "Skip single-use plastic bottles and carry a reusable one",
+    "category": "waste",
+    "points": 15,
+    "difficulty": "easy",
+    "icon": "fas fa-tint"
+  },
+  {
+    "title": "Take public transportation",
+    "description": "Use bus, train, or subway instead of driving alone",
+    "category": "transport",
+    "points": 25,
+    "difficulty": "medium",
+    "icon": "fas fa-bus"
+  },
+  {
+    "title": "Turn off lights when leaving a room",
+    "description": "Simple habit that saves energy throughout the day",
+    "category": "energy",
+    "points": 8,
+    "difficulty": "easy",
+    "icon": "fas fa-lightbulb"
+  },
+  {
+    "title": "Eat a plant-based meal",
+    "description": "Choose vegetables, fruits, and grains over meat for one meal",
+    "category": "food",
+    "points": 20,
+    "difficulty": "medium",
+    "icon": "fas fa-leaf"
+  },
+  {
+    "title": "Take a 5-minute shower",
+    "description": "Reduce water consumption with shorter showers",
+    "category": "water",
+    "points": 15,
+    "difficulty": "medium",
+    "icon": "fas fa-shower"
+  },
+  {
+    "title": "Recycle paper and plastic",
+    "description": "Properly sort and recycle waste materials",
+    "category": "waste",
+    "points": 12,
+    "difficulty": "easy",
+    "icon": "fas fa-recycle"
+  },
+  {
+    "title": "Walk or bike instead of driving",
+    "description": "Use human-powered transport for short trips",
+    "category": "transport",
+    "points": 30,
+    "difficulty": "medium",
+    "icon": "fas fa-bicycle"
+  },
+  {
+    "title": "Use cold water for laundry",
+    "description": "Wash clothes in cold water to save energy",
+    "category": "energy",
+    "points": 18,
+    "difficulty": "easy",
+    "icon": "fas fa-tshirt"
+  },
+  {
+    "title": "Bring your own shopping bag",
+    "description": "Use reusable bags instead of plastic ones",
+    "category": "waste",
+    "points": 10,
+    "difficulty": "easy",
+    "icon": "fas fa-shopping-bag"
+  },
+  {
+    "title": "Fix a water leak",
+    "description": "Repair dripping faucets or running toilets",
+    "category": "water",
+    "points": 35,
+    "difficulty": "hard",
+    "icon": "fas fa-wrench"
+  },
+  {
+    "title": "Start composting food scraps",
+    "description": "Turn organic waste into nutrient-rich soil",
+    "category": "waste",
+    "points": 40,
+    "difficulty": "hard",
+    "icon": "fas fa-seedling"
+  },
+  {
+    "title": "Use a smart thermostat",
+    "description": "Optimize heating and cooling efficiency",
+    "category": "energy",
+    "points": 45,
+    "difficulty": "hard",
+    "icon": "fas fa-thermometer-half"
+  },
+  {
+    "title": "Collect rainwater for plants",
+    "description": "Use natural water sources for gardening",
+    "category": "water",
+    "points": 25,
+    "difficulty": "medium",
+    "icon": "fas fa-cloud-rain"
+  },
+  {
+    "title": "Buy local produce",
+    "description": "Choose locally grown fruits and vegetables",
+    "category": "food",
+    "points": 22,
+    "difficulty": "easy",
+    "icon": "fas fa-apple-alt"
+  },
+  {
+    "title": "Switch to LED bulbs",
+    "description": "Replace incandescent bulbs with energy-efficient LEDs",
+    "category": "energy",
+    "points": 30,
+    "difficulty": "medium",
+    "icon": "fas fa-lightbulb"
+  },
+  {
+    "title": "Share a ride or carpool",
+    "description": "Travel with others to reduce emissions per person",
+    "category": "transport",
+    "points": 20,
+    "difficulty": "easy",
+    "icon": "fas fa-users"
+  },
+  {
+    "title": "Air dry clothes",
+    "description": "Skip the dryer and use natural air to dry laundry",
+    "category": "energy",
+    "points": 15,
+    "difficulty": "easy",
+    "icon": "fas fa-wind"
+  },
+  {
+    "title": "Donate unused items",
+    "description": "Give away items you no longer need instead of throwing away",
+    "category": "waste",
+    "points": 25,
+    "difficulty": "easy",
+    "icon": "fas fa-hand-holding-heart"
+  },
+  {
+    "title": "Use digital receipts",
+    "description": "Choose email receipts over paper ones",
+    "category": "waste",
+    "points": 8,
+    "difficulty": "easy",
+    "icon": "fas fa-receipt"
+  }
+]
