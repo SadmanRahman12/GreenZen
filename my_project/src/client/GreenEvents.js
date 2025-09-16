@@ -1,102 +1,166 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
+import { useDashboard } from '../admin/Dashboard'; // Import useDashboard
+import { useLocation } from 'react-router-dom'; // Import useLocation
 import './GreenEvents.css';
 
-const eventsData = [
-  {
-    id: 1,
-    title: 'Community Garden Cleanup',
-    date: 'September 15, 2025',
-    time: '10:00 AM - 1:00 PM',
-    location: 'Central Park Community Garden',
-    description: 'Join us to help maintain our beautiful community garden. All ages welcome!',
-    image: 'https://via.placeholder.com/400x250/a8e6cf/ffffff?text=Garden+Cleanup',
-  },
-  {
-    id: 2,
-    title: 'Eco-Friendly Workshop',
-    date: 'September 22, 2025',
-    time: '2:00 PM - 4:00 PM',
-    location: 'Online (Zoom)',
-    description: 'Learn practical tips for reducing your carbon footprint at home.',
-    image: 'https://via.placeholder.com/400x250/d4a8e6/ffffff?text=Eco+Workshop',
-  },
-  {
-    id: 3,
-    title: 'Local Beach Cleanup',
-    date: 'October 5, 2025',
-    time: '9:00 AM - 12:00 PM',
-    location: 'Oceanfront Beach',
-    description: 'Help us keep our beaches clean and protect marine life.',
-    image: 'https://via.placeholder.com/400x250/a8c6e6/ffffff?text=Beach+Cleanup',
-  },
-  {
-    id: 4,
-    title: 'Sustainable Living Fair',
-    date: 'October 19, 2025',
-    time: '11:00 AM - 5:00 PM',
-    location: 'City Convention Center',
-    description: 'Explore local green businesses, workshops, and speakers.',
-    image: 'https://via.placeholder.com/400x250/e6cfa8/ffffff?text=Sustainability+Fair',
-  },
-  {
-    id: 5,
-    title: 'Urban Farming Initiative',
-    date: 'November 1, 2025',
-    time: '9:00 AM - 3:00 PM',
-    location: 'Downtown Rooftop Farm',
-    description: 'Hands-on experience in urban farming techniques and sustainable food production.',
-    image: 'https://via.placeholder.com/400x250/b3e0b3/ffffff?text=Urban+Farming',
-  },
-  {
-    id: 6,
-    title: 'Recycling Drive & E-Waste Collection',
-    date: 'November 10, 2025',
-    time: '10:00 AM - 4:00 PM',
-    location: 'Community Recycling Center',
-    description: 'Bring your recyclables and old electronics for responsible disposal.',
-    image: 'https://via.placeholder.com/400x250/c2e0c2/ffffff?text=Recycling+Drive',
-  },
-  {
-    id: 7,
-    title: 'Green Energy Solutions Webinar',
-    date: 'November 25, 2025',
-    time: '6:00 PM - 7:30 PM',
-    location: 'Online (Google Meet)',
-    description: 'Discover the latest in renewable energy and how to implement it at home.',
-    image: 'https://via.placeholder.com/400x250/d1e0d1/ffffff?text=Green+Energy',
-  },
-  {
-    id: 8,
-    title: 'Winter Tree Planting Day',
-    date: 'December 7, 2025',
-    time: '9:00 AM - 1:00 PM',
-    location: 'Local Nature Reserve',
-    description: 'Help us plant new trees to restore local ecosystems and combat climate change.',
-    image: 'https://via.placeholder.com/400x250/e0e0e0/ffffff?text=Tree+Planting',
-  },
-];
-
 const GreenEvents = () => {
+  const { theme } = useContext(ThemeContext);
+  const location = useLocation(); // Get current location
+  const isDashboardRoute = location.pathname.startsWith('/dashboard');
+
+  // Call useDashboard unconditionally
+  const dashboardContext = useDashboard();
+  // Safely destructure userData, providing a default empty object if dashboardContext is null
+  const { userData } = dashboardContext || {};
+  console.log('GreenEvents: User data received:', userData);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showAddEventForm, setShowAddEventForm] = useState(false);
+  const [newEvent, setNewEvent] = useState({
+    title: '',
+    date: '',
+    time: '',
+    location: '',
+    description: '',
+    image: '',
+  });
+
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/events');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setEvents(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewEvent({ ...newEvent, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        alert('You must be logged in to add an event.');
+        return;
+      }
+
+      const response = await fetch('http://localhost:5000/api/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+        body: JSON.stringify(newEvent),
+      });
+
+      if (response.ok) {
+        alert('Event added successfully!');
+        setNewEvent({
+          title: '',
+          date: '',
+          time: '',
+          location: '',
+          description: '',
+          image: '',
+        });
+        setShowAddEventForm(false); // Hide form after submission
+        fetchEvents(); // Refresh event list
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to add event: ${errorData.message || response.statusText}`);
+      }
+    } catch (err) {
+      console.error('Error adding event:', err);
+      alert('An error occurred while adding the event.');
+    }
+  };
+
+  if (loading) {
+    return <div className={`green-events-page ${theme === 'dark' ? 'dark' : ''}`}>Loading events...</div>;
+  }
+
+  if (error) {
+    return <div className={`green-events-page ${theme === 'dark' ? 'dark' : ''}`}>Error: {error}</div>;
+  }
+
   return (
-    <div className="green-events-page">
+    <div className={`green-events-page ${theme === 'dark' ? 'dark' : ''}`}>
       <div className="events-hero">
         <h1>Discover Green Events Near You</h1>
         <p>Join our community in making a positive impact on the environment.</p>
+        {userData?.isAdmin && (
+          <button className="add-event-btn" onClick={() => setShowAddEventForm(!showAddEventForm)}>
+            {showAddEventForm ? 'Cancel Add Event' : 'Add New Event'}
+          </button>
+        )}
       </div>
 
-      <div className="events-list-container">
-        {eventsData.map((event) => (
-          <div key={event.id} className="event-card">
-            <img src={event.image} alt={event.title} className="event-image" />
-            <div className="event-info">
-              <h2>{event.title}</h2>
-              <p className="event-date-time">🗓️ {event.date} | 🕒 {event.time}</p>
-              <p className="event-location">📍 {event.location}</p>
-              <p className="event-description">{event.description}</p>
-              <button className="event-learn-more">Learn More</button>
+      {showAddEventForm && userData?.isAdmin && (
+        <div className="add-event-form-container">
+          <h2>Add New Green Event</h2>
+          <form onSubmit={handleSubmit} className="add-event-form">
+            <div className="form-group">
+              <label>Title</label>
+              <input type="text" name="title" value={newEvent.title} onChange={handleInputChange} placeholder="Event Title" required />
             </div>
-          </div>
-        ))}
+            <div className="form-group">
+              <label>Date</label>
+              <input type="date" name="date" value={newEvent.date} onChange={handleInputChange} placeholder="Event Date" required />
+            </div>
+            <div className="form-group">
+              <label>Time</label>
+              <input type="time" name="time" value={newEvent.time} onChange={handleInputChange} placeholder="Event Time" required />
+            </div>
+            <div className="form-group">
+              <label>Location</label>
+              <input type="text" name="location" value={newEvent.location} onChange={handleInputChange} placeholder="Event Location" required />
+            </div>
+            <div className="form-group">
+              <label>Description</label>
+              <textarea name="description" value={newEvent.description} onChange={handleInputChange} placeholder="Event Description" required></textarea>
+            </div>
+            <div className="form-group">
+              <label>Image URL</label>
+              <input type="text" name="image" value={newEvent.image} onChange={handleInputChange} placeholder="Image URL (optional)" />
+            </div>
+            <button type="submit" className="btn-primary">Submit Event</button>
+          </form>
+        </div>
+      )}
+
+      <div className="events-list-container">
+        {events.length > 0 ? (
+          events.map((event) => (
+            <div key={event._id} className="event-card">
+              <img src={event.image} alt={event.title} className="event-image" />
+              <div className="event-info">
+                <h2>{event.title}</h2>
+                <p className="event-date-time">🗓️ {event.date} | 🕒 {event.time}</p>
+                <p className="event-location">📍 {event.location}</p>
+                <p className="event-description">{event.description}</p>
+                <button className="event-learn-more">Learn More</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="no-events-message">No green events available at the moment.</p>
+        )}
       </div>
     </div>
   );

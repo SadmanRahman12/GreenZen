@@ -71,6 +71,7 @@ router.post('/login', async (req, res) => {
     const payload = {
       user: {
         id: user.id,
+        isAdmin: user.isAdmin, // Include isAdmin in payload
       },
     };
 

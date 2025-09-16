@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { blogData } from './blogData';
 import './Home.css';
 import './Blog.css';
+import ForumPreview from './ForumPreview'; // Import ForumPreview
 
 const Home = () => {
   return (
@@ -123,6 +124,9 @@ const Home = () => {
           </Row>
         </Container>
       </div>
+
+      {/* Forum Preview Section */}
+      <ForumPreview />
 
       <div className="testimonials-section py-5">
         <Container>

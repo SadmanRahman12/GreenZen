@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDashboard } from '../admin/Dashboard';
 import './Settings.css';
 import { ThemeContext } from '../context/ThemeContext';
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState('profile');
-  const [userData, setUserData] = useState({
-    username: '',
-    email: '',
-    avatar: '',
-    settings: {
-      notifications: {
-        email: true,
-        push: true,
-      },
-      theme: 'light',
+  const { userData, fetchUserData } = useDashboard(); // Get user data from dashboard context
+  const [currentName, setCurrentName] = useState('');
+  const [currentEmail, setCurrentEmail] = useState('');
+  const [localSettings, setLocalSettings] = useState({
+    notifications: {
+      email: true,
+      push: true,
     },
+    theme: 'light',
   });
   const [passwordData, setPasswordData] = useState({
     currentPassword: '',
@@ -25,60 +24,43 @@ const Settings = () => {
   const { theme, toggleTheme, setTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
+  // Update local settings when userData from context changes
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem('authToken');
-        const response = await fetch('http://localhost:5000/api/user/settings', {
-          headers: {
-            'x-auth-token': token,
-          },
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
-          if (data.settings && data.settings.theme) {
-            setTheme(data.settings.theme);
-          }
-        } else {
-          console.error('Failed to fetch user settings');
-        }
-      } catch (error) {
-        console.error('Error fetching user settings:', error);
+    if (userData) {
+      setCurrentName(userData.name || '');
+      setCurrentEmail(userData.email || '');
+      if (userData.settings) {
+        setLocalSettings(userData.settings);
+        // No need to call setTheme here, ThemeWrapper handles it based on localSettings.theme
       }
-    };
-
-    fetchUserData();
-  }, [setTheme]);
+    }
+  }, [userData]); // Removed setTheme from dependency array as it's not directly used here
 
   const handleThemeChange = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    setUserData(prevData => ({
-      ...prevData,
-      settings: {
-        ...prevData.settings,
-        theme: newTheme,
-      },
+    toggleTheme(); // Use the toggleTheme function from context
+    setLocalSettings(prevSettings => ({
+      ...prevSettings,
+      theme: theme === 'light' ? 'dark' : 'light', // Update local settings based on *current* theme after toggle
     }));
   };
 
-  const handleInputChange = (e) => {
+  const handleSettingsInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (name.includes('.')) {
+    if (name === 'name') {
+      setCurrentName(value);
+    } else if (name === 'email') {
+      setCurrentEmail(value);
+    } else if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setUserData(prevData => ({
-        ...prevData,
-        settings: {
-          ...prevData.settings,
-          [parent]: {
-            ...prevData.settings[parent],
-            [child]: type === 'checkbox' ? checked : value,
-          },
+      setLocalSettings(prevSettings => ({
+        ...prevSettings,
+        [parent]: {
+          ...prevSettings[parent],
+          [child]: type === 'checkbox' ? checked : value,
         },
       }));
     } else {
-      setUserData(prevData => ({ ...prevData, [name]: value }));
+      setLocalSettings(prevSettings => ({ ...prevSettings, [name]: value }));
     }
   };
 
@@ -96,11 +78,16 @@ const Settings = () => {
           'Content-Type': 'application/json',
           'x-auth-token': token,
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify({
+          name: currentName, // Send updated name
+          email: currentEmail, // Send updated email
+          settings: localSettings, // Send updated local settings
+        }),
       });
 
       if (response.ok) {
         alert('Settings saved successfully!');
+        fetchUserData(); // Refresh user data in dashboard context
       } else {
         alert('Failed to save settings.');
       }
@@ -151,18 +138,22 @@ const Settings = () => {
   };
 
   const renderContent = () => {
+    if (!userData) {
+      return <div>Loading user data...</div>;
+    }
+
     switch (activeTab) {
       case 'profile':
         return (
           <div>
             <h3>Profile Settings</h3>
-            <div className={`form-group ${userData.username ? 'has-value' : ''}`}>
-              <input type="text" name="username" value={userData.username} onChange={handleInputChange} placeholder=" " />
-              <label>Username</label>
+            <div className={`form-group ${currentName ? 'has-value' : ''}`}>
+              <input type="text" name="name" value={currentName} onChange={handleSettingsInputChange} placeholder=" " />
+              <label>Name</label>
             </div>
-            <div className={`form-group ${userData.avatar ? 'has-value' : ''}`}>
-              <input type="text" name="avatar" value={userData.avatar} onChange={handleInputChange} placeholder=" " />
-              <label>Avatar URL</label>
+            <div className={`form-group ${currentEmail ? 'has-value' : ''}`}>
+              <input type="email" name="email" value={currentEmail} onChange={handleSettingsInputChange} placeholder=" " />
+              <label>Email</label>
             </div>
           </div>
         );
@@ -170,11 +161,6 @@ const Settings = () => {
         return (
           <div>
             <h3>Account Settings</h3>
-            <div className={`form-group ${userData.email ? 'has-value' : ''}`}>
-              <input type="email" name="email" value={userData.email} onChange={handleInputChange} placeholder=" " />
-              <label>Email</label>
-            </div>
-            <hr />
             <h4>Change Password</h4>
             <div className={`form-group ${passwordData.currentPassword ? 'has-value' : ''}`}>
               <input type="password" name="currentPassword" value={passwordData.currentPassword} onChange={handlePasswordChange} placeholder=" " />
@@ -198,14 +184,14 @@ const Settings = () => {
             <div className="form-group-toggle">
               <label>Email Notifications</label>
               <label className="switch">
-                <input type="checkbox" name="settings.notifications.email" checked={userData.settings.notifications.email} onChange={handleInputChange} />
+                <input type="checkbox" name="notifications.email" checked={localSettings.notifications.email} onChange={handleSettingsInputChange} />
                 <span className="slider round"></span>
               </label>
             </div>
             <div className="form-group-toggle">
               <label>Push Notifications</label>
               <label className="switch">
-                <input type="checkbox" name="settings.notifications.push" checked={userData.settings.notifications.push} onChange={handleInputChange} />
+                <input type="checkbox" name="notifications.push" checked={localSettings.notifications.push} onChange={handleSettingsInputChange} />
                 <span className="slider round"></span>
               </label>
             </div>
@@ -218,7 +204,7 @@ const Settings = () => {
             <div className="form-group-toggle">
               <label>Dark Mode</label>
               <label className="switch">
-                <input type="checkbox" name="settings.theme" checked={theme === 'dark'} onChange={handleThemeChange} />
+                <input type="checkbox" name="theme" checked={theme === 'dark'} onChange={handleThemeChange} />
                 <span className="slider round"></span>
               </label>
             </div>
@@ -230,9 +216,9 @@ const Settings = () => {
   };
 
   return (
-    <div className="settings-page">
-      <div className="row">
-        <div className="col-sm-3">
+    <div className={`settings-page ${theme === 'dark' ? 'dark' : ''}`}>
+      <div className="settings-container">
+        <div className="settings-nav-panel">
           <ul className="settings-nav">
             <li className={`settings-nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => setActiveTab('profile')}>Profile</li>
             <li className={`settings-nav-item ${activeTab === 'account' ? 'active' : ''}`} onClick={() => setActiveTab('account')}>Account</li>
@@ -240,13 +226,16 @@ const Settings = () => {
             <li className={`settings-nav-item ${activeTab === 'theme' ? 'active' : ''}`} onClick={() => setActiveTab('theme')}>Theme</li>
           </ul>
         </div>
-        <div className="col-sm-9">
-          <div className="settings-content">
+        <div className="settings-content-panel">
+          <div className="settings-content-header">
+            <h2>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Settings</h2>
+          </div>
+          <div className="settings-content-body">
             {renderContent()}
-            <div className="settings-actions">
-              <button onClick={handleSaveChanges} className="btn-primary">Save Changes</button>
-              <button onClick={handleLogout} className="btn-danger">Logout</button>
-            </div>
+          </div>
+          <div className="settings-actions">
+            <button onClick={handleSaveChanges} className="btn-primary">Save Changes</button>
+            <button onClick={handleLogout} className="btn-danger">Logout</button>
           </div>
         </div>
       </div>

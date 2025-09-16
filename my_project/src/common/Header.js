@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'; // Re-import LinkContainer
 import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 import Logo from './Logo';
 import './Header.css'; // For custom styles
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { userData, loading } = useContext(UserContext);
   const isDashboard = location.pathname.startsWith('/dashboard');
 
   const handleLogoClick = () => {
@@ -36,6 +38,12 @@ const Header = () => {
       <LinkContainer to={isDashboard ? "/dashboard/forum" : "/forum"}>
         <Nav.Link>Community Forum</Nav.Link>
       </LinkContainer>
+
+      {!loading && userData && userData.isAdmin && (
+        <LinkContainer to="/admin">
+          <Nav.Link>Admin Dashboard</Nav.Link>
+        </LinkContainer>
+      )}
 
       {/* Dashboard Links (Conditional) */}
       {isDashboard && (

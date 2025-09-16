@@ -1,0 +1,119 @@
+/* GreenEventsPreview.css */
+
+.light .green-events-preview, .dark .green-events-preview {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.light .green-events-preview .section-title-3 {
+  color: var(--primary-color);
+}
+
+.dark .green-events-preview .section-title-3 {
+  color: var(--text-color) !important;
+}
+
+.light .green-events-preview .events-list-container, .dark .green-events-preview .events-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.light .green-events-preview .event-card, .dark .green-events-preview .event-card {
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+}
+
+.light .green-events-preview .event-card {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 15px var(--box-shadow-color);
+}
+
+.dark .green-events-preview .event-card {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 15px var(--box-shadow-color);
+}
+
+.light .green-events-preview .event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--box-shadow-color-hover);
+}
+
+.dark .green-events-preview .event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--box-shadow-color-hover);
+}
+
+.light .green-events-preview .event-image, .dark .green-events-preview .event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.light .green-events-preview .event-info, .dark .green-events-preview .event-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.light .green-events-preview .event-info h2, .dark .green-events-preview .event-info h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.light .green-events-preview .event-info h2 {
+  color: var(--primary-color);
+}
+
+.dark .green-events-preview .event-info h2 {
+  color: var(--primary-color-light);
+}
+
+.light .green-events-preview .event-date-time, .dark .green-events-preview .event-date-time,
+.light .green-events-preview .event-location, .dark .green-events-preview .event-location {
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.light .green-events-preview .event-description, .dark .green-events-preview .event-description {
+  font-size: 1em;
+  color: var(--text-color);
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.light .green-events-preview .event-learn-more, .dark .green-events-preview .event-learn-more {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.light .green-events-preview .event-learn-more {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.dark .green-events-preview .event-learn-more {
+  background-color: var(--primary-color-light);
+  color: #121212;
+}
+
+.light .green-events-preview .event-learn-more:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.dark .green-events-preview .event-learn-more:hover {
+  background-color: var(--primary-color);
+}

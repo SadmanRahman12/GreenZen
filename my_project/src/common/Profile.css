@@ -1,207 +1,263 @@
-/* Profile.css */
-
 .profile-page {
-  padding: 40px;
-  background-color: var(--background-color);
-  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .profile-header-card {
-  display: flex;
-  align-items: center;
   background-color: var(--card-bg);
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: center;
   margin-bottom: 30px;
   position: relative;
-  overflow: hidden;
 }
 
-.profile-header-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, var(--primary-color), #218838);
-  opacity: 0.1;
-  z-index: 1;
+body.dark .profile-page .profile-header-card {
+  background-color: var(--card-bg);
 }
 
 .profile-avatar-container {
   position: relative;
   margin-right: 30px;
-  z-index: 2;
 }
 
 .profile-avatar {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 5px solid var(--card-bg);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  object-fit: cover;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 0 5px rgba(var(--primary-color-rgb), 0.2);
 }
 
-.profile-avatar:hover {
-  transform: scale(1.05);
+body.dark .profile-page .profile-avatar {
+  border-color: var(--primary-color-light);
 }
 
 .camera-icon {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 5px;
+  right: 5px;
   background-color: var(--primary-color);
-  color: var(--background-color);
-  border: none;
+  color: var(--text-color-on-dark-bg);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  border: 2px solid var(--card-bg);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+body.dark .profile-page .camera-icon {
+  background-color: var(--primary-color-light);
+  border-color: var(--card-bg);
 }
 
 .camera-icon:hover {
-  filter: brightness(90%);
+  background-color: var(--primary-color-darker);
 }
 
-.profile-header-info {
-  z-index: 2;
+body.dark .profile-page .camera-icon:hover {
+  background-color: var(--primary-color-darker);
 }
 
 .profile-header-info h2 {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 2.2em;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+body.dark .profile-page .profile-header-info h2 {
   color: var(--text-color);
 }
 
 .profile-header-info p {
-  margin: 5px 0 15px;
-  font-size: 1.2rem;
-  color: var(--text-color);
+  font-size: 1.1em;
+  color: var(--text-color-light);
+  margin-bottom: 15px;
+}
+
+body.dark .profile-page .profile-header-info p {
+  color: var(--text-color-light);
 }
 
 .edit-profile-btn {
   background-color: var(--primary-color);
-  color: var(--background-color);
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
+  color: var(--text-color-on-dark-bg);
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .profile-page .edit-profile-btn {
+  background-color: var(--primary-color-light);
 }
 
 .edit-profile-btn:hover {
-  filter: brightness(90%);
-  box-shadow: 0 4px 15px var(--primary-color-shadow);
+  background-color: var(--primary-color-darker);
+}
+
+body.dark .profile-page .edit-profile-btn:hover {
+  background-color: var(--primary-color-darker);
 }
 
 .profile-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
 }
 
 .profile-card {
   background-color: var(--card-bg);
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
 }
 
-.profile-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+body.dark .profile-page .profile-card {
+  background-color: var(--card-bg);
 }
 
 .profile-card h3 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--primary-color);
+  font-size: 1.8em;
+  color: var(--text-color);
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-/* Stats Card */
+body.dark .profile-page .profile-card h3 {
+  color: var(--text-color);
+}
+
+.profile-card h3 i {
+  color: var(--primary-color);
+}
+
+body.dark .profile-page .profile-card h3 i {
+  color: var(--primary-color-light);
+}
+
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
   text-align: center;
 }
 
 .stat-item {
-  background-color: var(--background-color);
+  background-color: var(--card-bg-darker);
   padding: 20px;
   border-radius: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
+}
+
+body.dark .profile-page .stat-item {
+  background-color: var(--card-bg-darker);
 }
 
 .stat-item:hover {
-  background-color: var(--background-color);
+  background-color: var(--card-bg);
+}
+
+body.dark .profile-page .stat-item:hover {
+  background-color: var(--card-bg);
 }
 
 .stat-icon {
-  font-size: 2.5rem;
+  font-size: 2.5em;
   color: var(--primary-color);
   margin-bottom: 10px;
 }
 
+body.dark .profile-page .stat-icon {
+  color: var(--primary-color-light);
+}
+
 .stat-item p {
-  margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.8em;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--primary-color-darker);
+  margin-bottom: 5px;
+}
+
+body.dark .profile-page .stat-item p {
+  color: var(--primary-color-light);
 }
 
 .stat-item span {
-  font-size: 1rem;
-  color: var(--text-color);
+  font-size: 0.9em;
+  color: var(--text-color-light);
 }
 
-/* Achievements Card */
+body.dark .profile-page .stat-item span {
+  color: var(--text-color-light);
+}
+
 .achievements-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  text-align: center;
+  justify-content: center;
 }
 
 .achievement-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: var(--card-bg-darker);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 120px;
+  transition: background-color 0.2s ease;
+}
+
+body.dark .profile-page .achievement-item {
+  background-color: var(--card-bg-darker);
+}
+
+.achievement-item:hover {
+  background-color: var(--card-bg);
+}
+
+body.dark .profile-page .achievement-item:hover {
+  background-color: var(--card-bg);
 }
 
 .achievement-icon {
-  font-size: 3rem;
-  color: #ffc107;
+  font-size: 2em;
+  color: var(--primary-color);
   margin-bottom: 10px;
 }
 
-.achievement-item p {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--text-color);
-  font-weight: bold;
+body.dark .profile-page .achievement-icon {
+  color: var(--primary-color-light);
 }
 
-/* Activity Card */
+.achievement-item p {
+  font-size: 0.9em;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+body.dark .profile-page .achievement-item p {
+  color: var(--text-color);
+}
+
 .activity-card ul {
   list-style: none;
   padding: 0;
@@ -209,42 +265,57 @@
 }
 
 .activity-card li {
+  background-color: var(--card-bg-darker);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
-  border-bottom: 1px solid var(--card-border);
-}
-
-.activity-card li:last-child {
-  border-bottom: none;
-}
-
-.activity-card span {
-  font-size: 1.1rem;
+  align-items: center;
+  font-size: 1em;
   color: var(--text-color);
+  transition: background-color 0.2s ease;
+}
+
+body.dark .profile-page .activity-card li {
+  background-color: var(--card-bg-darker);
+}
+
+.activity-card li:hover {
+  background-color: var(--card-bg);
+}
+
+body.dark .profile-page .activity-card li:hover {
+  background-color: var(--card-bg);
 }
 
 .activity-date {
-  font-size: 0.9rem;
-  color: var(--text-color);
+  font-size: 0.9em;
+  color: var(--text-color-light);
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .profile-content {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-header-info h2 {
-    font-size: 2rem;
-  }
+body.dark .profile-page .activity-date {
+  color: var(--text-color-light);
 }
 
+.no-achievements-message,
+.no-activity-message {
+  text-align: center;
+  font-size: 1.1em;
+  color: var(--text-color-light);
+  padding: 20px;
+  background-color: var(--card-bg-darker);
+  border-radius: 10px;
+}
+
+body.dark .profile-page .no-achievements-message,
+body.dark .profile-page .no-activity-message {
+  background-color: var(--card-bg-darker);
+  color: var(--text-color-light);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .profile-page {
-    padding: 20px;
-  }
-
   .profile-header-card {
     flex-direction: column;
     text-align: center;
@@ -255,39 +326,42 @@
     margin-bottom: 20px;
   }
 
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
   .profile-header-info h2 {
-    font-size: 1.8rem;
+    font-size: 1.8em;
   }
 
-  .achievements-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  }
-}
-
-@media (max-width: 576px) {
-  .profile-avatar {
-    width: 120px;
-    height: 120px;
-  }
-
-  .profile-header-info h2 {
-    font-size: 1.5rem;
+  .profile-header-info p {
+    font-size: 0.9em;
   }
 
   .edit-profile-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-card h3 {
+    font-size: 1.5em;
+    justify-content: center;
   }
 
   .stats-grid {
     grid-template-columns: 1fr;
   }
 
-  .achievement-item p {
-    font-size: 0.8rem;
+  .achievement-item {
+    width: 100px;
+  }
+
+  .activity-card li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .activity-date {
+    margin-top: 5px;
   }
 }

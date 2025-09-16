@@ -1,0 +1,82 @@
+.forum-post-detail {
+  padding: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: var(--background-color-secondary);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+.forum-post-detail h1 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.forum-post-detail .post-meta {
+  font-size: 0.9em;
+  color: var(--text-color-secondary);
+  margin-bottom: 20px;
+}
+
+.forum-post-detail p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.comments-section {
+  margin-top: 40px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.comments-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  resize: vertical;
+}
+
+.comment-form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.comment-form button:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment-item {
+  background-color: var(--background-color-tertiary);
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-shadow: var(--box-shadow-sm);
+}
+
+.comment-item .comment-meta {
+  font-size: 0.85em;
+  color: var(--text-color-secondary);
+  margin-bottom: 5px;
+}
+
+.comment-item p {
+  margin-bottom: 0;
+}
