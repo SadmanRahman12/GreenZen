@@ -15,6 +15,12 @@ app.use('/api/auth', authRoutes);
 const userRoutes = require('./routes/user');
 app.use('/api/user', userRoutes);
 
+const challengesRoutes = require('./routes/challenges');
+app.use('/api/challenges', challengesRoutes);
+
+const campaignsRoutes = require('./routes/campaigns');
+app.use('/api/campaigns', campaignsRoutes);
+
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGODB_URI, {

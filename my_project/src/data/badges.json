@@ -1,0 +1,162 @@
+[
+  {
+    "id": "first_challenge",
+    "name": "Getting Started",
+    "description": "Complete your first daily challenge",
+    "icon": "fas fa-play",
+    "color": "#28a745",
+    "requirement": "Complete 1 challenge"
+  },
+  {
+    "id": "weekly_warrior",
+    "name": "Weekly Warrior",
+    "description": "Complete challenges for 7 days in a row",
+    "icon": "fas fa-fire",
+    "color": "#ff6b35",
+    "requirement": "7-day streak"
+  },
+  {
+    "id": "monthly_master",
+    "name": "Monthly Master",
+    "description": "Complete challenges for 30 days in a row",
+    "icon": "fas fa-crown",
+    "color": "#ffd700",
+    "requirement": "30-day streak"
+  },
+  {
+    "id": "eco_champion",
+    "name": "Eco Champion",
+    "description": "Earn 1000 eco-points",
+    "icon": "fas fa-trophy",
+    "color": "#ffd700",
+    "requirement": "1000 points"
+  },
+  {
+    "id": "green_guru",
+    "name": "Green Guru",
+    "description": "Reach level 10",
+    "icon": "fas fa-star",
+    "color": "#9c27b0",
+    "requirement": "Level 10"
+  },
+  {
+    "id": "energy_saver",
+    "name": "Energy Saver",
+    "description": "Complete 20 energy-related challenges",
+    "icon": "fas fa-bolt",
+    "color": "#ffeb3b",
+    "requirement": "20 energy challenges"
+  },
+  {
+    "id": "waste_warrior",
+    "name": "Waste Warrior",
+    "description": "Complete 15 waste reduction challenges",
+    "icon": "fas fa-recycle",
+    "color": "#4caf50",
+    "requirement": "15 waste challenges"
+  },
+  {
+    "id": "water_guardian",
+    "name": "Water Guardian",
+    "description": "Complete 10 water conservation challenges",
+    "icon": "fas fa-tint",
+    "color": "#2196f3",
+    "requirement": "10 water challenges"
+  },
+  {
+    "id": "transport_hero",
+    "name": "Transport Hero",
+    "description": "Complete 15 sustainable transport challenges",
+    "icon": "fas fa-bicycle",
+    "color": "#ff9800",
+    "requirement": "15 transport challenges"
+  },
+  {
+    "id": "food_friend",
+    "name": "Food Friend",
+    "description": "Complete 10 sustainable food challenges",
+    "icon": "fas fa-apple-alt",
+    "color": "#8bc34a",
+    "requirement": "10 food challenges"
+  },
+  {
+    "id": "social_butterfly",
+    "name": "Social Butterfly",
+    "description": "Add 5 friends to your network",
+    "icon": "fas fa-users",
+    "color": "#e91e63",
+    "requirement": "5 friends"
+  },
+  {
+    "id": "battle_master",
+    "name": "Battle Master",
+    "description": "Win 3 eco-battles",
+    "icon": "fas fa-sword",
+    "color": "#795548",
+    "requirement": "3 battle wins"
+  },
+  {
+    "id": "campaign_champion",
+    "name": "Campaign Champion",
+    "description": "Complete a sustainability campaign",
+    "icon": "fas fa-flag",
+    "color": "#607d8b",
+    "requirement": "1 campaign completed"
+  },
+  {
+    "id": "earth_day_hero",
+    "name": "Earth Day Hero",
+    "description": "Participate in Earth Day campaign",
+    "icon": "fas fa-globe",
+    "color": "#4caf50",
+    "requirement": "Earth Day participation"
+  },
+  {
+    "id": "points_collector",
+    "name": "Points Collector",
+    "description": "Earn 5000 total eco-points",
+    "icon": "fas fa-gem",
+    "color": "#e91e63",
+    "requirement": "5000 points"
+  },
+  {
+    "id": "legendary_green",
+    "name": "Legendary Green",
+    "description": "Reach level 25",
+    "icon": "fas fa-dragon",
+    "color": "#9c27b0",
+    "requirement": "Level 25"
+  },
+  {
+    "id": "streak_legend",
+    "name": "Streak Legend",
+    "description": "Maintain a 100-day streak",
+    "icon": "fas fa-fire-flame-curved",
+    "color": "#ff5722",
+    "requirement": "100-day streak"
+  },
+  {
+    "id": "community_leader",
+    "name": "Community Leader",
+    "description": "Rank in top 10 globally",
+    "icon": "fas fa-medal",
+    "color": "#ffd700",
+    "requirement": "Top 10 global rank"
+  },
+  {
+    "id": "regional_champion",
+    "name": "Regional Champion",
+    "description": "Rank #1 in your region",
+    "icon": "fas fa-mountain-flag",
+    "color": "#ff6b35",
+    "requirement": "Regional #1"
+  },
+  {
+    "id": "carbon_crusher",
+    "name": "Carbon Crusher",
+    "description": "Save 500kg of CO2 equivalent",
+    "icon": "fas fa-cloud",
+    "color": "#607d8b",
+    "requirement": "500kg CO2 saved"
+  }
+]

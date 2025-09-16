@@ -1,0 +1,152 @@
+[
+  {
+    "id": "bamboo_toothbrush",
+    "name": "Bamboo Toothbrush Set",
+    "description": "Eco-friendly bamboo toothbrushes (pack of 4)",
+    "category": "personal_care",
+    "pointsCost": 500,
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300",
+    "inStock": true,
+    "carbonOffset": "2kg CO2"
+  },
+  {
+    "id": "reusable_water_bottle",
+    "name": "Stainless Steel Water Bottle",
+    "description": "32oz insulated stainless steel water bottle",
+    "category": "lifestyle",
+    "pointsCost": 800,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=300",
+    "inStock": true,
+    "carbonOffset": "15kg CO2"
+  },
+  {
+    "id": "solar_power_bank",
+    "name": "Solar Power Bank",
+    "description": "Portable solar-powered device charger",
+    "category": "electronics",
+    "pointsCost": 1500,
+    "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=300",
+    "inStock": true,
+    "carbonOffset": "25kg CO2"
+  },
+  {
+    "id": "organic_cotton_tote",
+    "name": "Organic Cotton Tote Bag",
+    "description": "Reusable shopping bag made from organic cotton",
+    "category": "lifestyle",
+    "pointsCost": 400,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300",
+    "inStock": true,
+    "carbonOffset": "8kg CO2"
+  },
+  {
+    "id": "seed_starter_kit",
+    "name": "Herb Garden Starter Kit",
+    "description": "Complete kit to grow herbs at home",
+    "category": "gardening",
+    "pointsCost": 1200,
+    "image": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300",
+    "inStock": true,
+    "carbonOffset": "30kg CO2"
+  },
+  {
+    "id": "led_bulb_pack",
+    "name": "LED Light Bulb Pack",
+    "description": "Energy-efficient LED bulbs (pack of 6)",
+    "category": "home",
+    "pointsCost": 600,
+    "image": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300",
+    "inStock": true,
+    "carbonOffset": "100kg CO2"
+  },
+  {
+    "id": "compost_bin",
+    "name": "Kitchen Compost Bin",
+    "description": "Countertop compost bin with carbon filters",
+    "category": "home",
+    "pointsCost": 1000,
+    "image": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300",
+    "inStock": true,
+    "carbonOffset": "50kg CO2"
+  },
+  {
+    "id": "bamboo_cutlery",
+    "name": "Bamboo Cutlery Set",
+    "description": "Portable bamboo fork, knife, and spoon set",
+    "category": "lifestyle",
+    "pointsCost": 350,
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300",
+    "inStock": true,
+    "carbonOffset": "5kg CO2"
+  },
+  {
+    "id": "tree_planting_donation",
+    "name": "Plant 10 Trees",
+    "description": "Donation to plant 10 trees in reforestation projects",
+    "category": "donation",
+    "pointsCost": 2000,
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300",
+    "inStock": true,
+    "carbonOffset": "200kg CO2"
+  },
+  {
+    "id": "ocean_cleanup_donation",
+    "name": "Ocean Cleanup Support",
+    "description": "Donation to ocean cleanup initiatives",
+    "category": "donation",
+    "pointsCost": 1500,
+    "image": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300",
+    "inStock": true,
+    "carbonOffset": "0kg CO2"
+  },
+  {
+    "id": "solar_lantern",
+    "name": "Solar LED Lantern",
+    "description": "Portable solar-powered LED lantern",
+    "category": "electronics",
+    "pointsCost": 900,
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300",
+    "inStock": true,
+    "carbonOffset": "20kg CO2"
+  },
+  {
+    "id": "beeswax_wraps",
+    "name": "Beeswax Food Wraps",
+    "description": "Reusable alternative to plastic wrap (set of 3)",
+    "category": "kitchen",
+    "pointsCost": 450,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300",
+    "inStock": true,
+    "carbonOffset": "12kg CO2"
+  },
+  {
+    "id": "wildlife_donation",
+    "name": "Wildlife Conservation",
+    "description": "Donation to wildlife conservation efforts",
+    "category": "donation",
+    "pointsCost": 1800,
+    "image": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=300",
+    "inStock": true,
+    "carbonOffset": "0kg CO2"
+  },
+  {
+    "id": "eco_cleaning_kit",
+    "name": "Eco Cleaning Kit",
+    "description": "Natural, non-toxic household cleaning products",
+    "category": "home",
+    "pointsCost": 700,
+    "image": "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=300",
+    "inStock": true,
+    "carbonOffset": "15kg CO2"
+  },
+  {
+    "id": "renewable_energy_donation",
+    "name": "Renewable Energy Support",
+    "description": "Donation to renewable energy projects",
+    "category": "donation",
+    "pointsCost": 2500,
+    "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=300",
+    "inStock": true,
+    "carbonOffset": "500kg CO2"
+  }
+]
