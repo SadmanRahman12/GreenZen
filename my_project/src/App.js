@@ -25,6 +25,8 @@ import CommunityForum from './client/CommunityForum';
 import DashboardForum from './admin/DashboardForum';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import DashboardCampaigns from './admin/DashboardCampaigns';
+import DashboardChallenges from './admin/DashboardChallenges';
 
 function App() {
   return (
@@ -45,7 +47,8 @@ function App() {
             <Route path="/forum" element={<CommunityForum />} />
             <Route path="/dashboard" element={<Dashboard name="User" />}>
               <Route index element={<DashboardHome />} />
-              <Route path="habit-tracker" element={<HabitTracker />} />
+                <Route path="campaigns" element={<DashboardCampaigns />} />
+                <Route path="challenges" element={<DashboardChallenges />} />
               <Route path="leaderboard" element={<Leaderboard />} />
               <Route path="education" element={<DashboardEducation />} />
               <Route path="impact" element={<DashboardImpact />} />

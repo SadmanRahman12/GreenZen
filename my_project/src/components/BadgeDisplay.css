@@ -1,0 +1,189 @@
+/* Badge Display Styles */
+
+.badge-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.badge-display:hover {
+  transform: scale(1.05);
+}
+
+.badge-icon {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.badge-icon::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  z-index: -1;
+}
+
+.badge-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.badge-name {
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.2;
+}
+
+.badge-description {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+/* Size variants */
+.badge-sm .badge-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.badge-md .badge-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+}
+
+.badge-lg .badge-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+}
+
+.badge-lg .badge-name {
+  font-size: 1rem;
+}
+
+.badge-xl .badge-icon {
+  width: 64px;
+  height: 64px;
+  font-size: 32px;
+}
+
+.badge-xl .badge-name {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.badge-xl .badge-description {
+  font-size: 0.9rem;
+}
+
+/* Special effects for premium badges */
+.badge-display[data-premium="true"] .badge-icon {
+  animation: premiumGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes premiumGlow {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 215, 0, 0.6);
+  }
+}
+
+/* Tooltip customization */
+.tooltip-inner {
+  max-width: 300px;
+  text-align: left;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: var(--card-bg);
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: var(--card-bg);
+}
+
+.tooltip.bs-tooltip-left .tooltip-arrow::before {
+  border-left-color: var(--card-bg);
+}
+
+.tooltip.bs-tooltip-right .tooltip-arrow::before {
+  border-right-color: var(--card-bg);
+}
+
+/* Badge grid layout for collections */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .badge-lg .badge-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .badge-xl .badge-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+
+  .badges-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .badge-xl .badge-display {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .badges-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark theme adjustments */
+.dark .tooltip-inner {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
