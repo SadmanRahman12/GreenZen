@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 import { ThemeContext } from '../context/ThemeContext';
 import { useDashboard } from '../admin/Dashboard'; // Import useDashboard
 import { useLocation } from 'react-router-dom'; // Import useLocation
@@ -6,6 +7,7 @@ import './GreenEvents.css';
 
 const GreenEvents = () => {
   const { theme } = useContext(ThemeContext);
+  const { token } = useContext(UserContext);
   const location = useLocation(); // Get current location
   const isDashboardRoute = location.pathname.startsWith('/dashboard');
 
@@ -71,6 +73,8 @@ const GreenEvents = () => {
 
       if (response.ok) {
         alert('Event added successfully!');
+        const addedEvent = await response.json(); // Get the newly added event from the response
+        setEvents((prevEvents) => [addedEvent, ...prevEvents]); // Add the new event to the state
         setNewEvent({
           title: '',
           date: '',
@@ -80,7 +84,7 @@ const GreenEvents = () => {
           image: '',
         });
         setShowAddEventForm(false); // Hide form after submission
-        fetchEvents(); // Refresh event list
+        // No need to call fetchEvents() here for immediate update, as we're adding it directly
       } else {
         const errorData = await response.json();
         alert(`Failed to add event: ${errorData.message || response.statusText}`);
@@ -104,14 +108,14 @@ const GreenEvents = () => {
       <div className="events-hero">
         <h1>Discover Green Events Near You</h1>
         <p>Join our community in making a positive impact on the environment.</p>
-        {userData?.isAdmin && (
+        {token && (
           <button className="add-event-btn" onClick={() => setShowAddEventForm(!showAddEventForm)}>
             {showAddEventForm ? 'Cancel Add Event' : 'Add New Event'}
           </button>
         )}
       </div>
 
-      {showAddEventForm && userData?.isAdmin && (
+      {showAddEventForm && token && (
         <div className="add-event-form-container">
           <h2>Add New Green Event</h2>
           <form onSubmit={handleSubmit} className="add-event-form">

@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 // @route   POST api/events
 // @desc    Create an event
 // @access  Private
-router.post('/', adminAuth, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   console.log('Request Body:', req.body);
   console.log('User:', req.user);
   const { title, date, time, location, description, image } = req.body;

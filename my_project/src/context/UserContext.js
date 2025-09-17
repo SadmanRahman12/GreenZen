@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 export const UserContext = createContext();
 
@@ -16,36 +16,36 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (token) {
-        try {
-          const response = await fetch('http://localhost:5000/api/user/settings', {
-            headers: {
-              'x-auth-token': token,
-            },
-          });
-          if (response.ok) {
-            const data = await response.json();
-            setUserData(data);
-          } else {
-            console.error('Failed to fetch user data in UserContext');
-            setUserData(null);
-            setAuthToken(null); // Clear token if invalid
-          }
-        } catch (error) {
-          console.error('Error fetching user data in UserContext:', error);
+  const fetchUserData = useCallback(async () => {
+    if (token) {
+      try {
+        const response = await fetch('http://localhost:5000/api/user/settings', {
+          headers: {
+            'x-auth-token': token,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUserData(data);
+        } else {
+          console.error('Failed to fetch user data in UserContext');
           setUserData(null);
-          setAuthToken(null); // Clear token on error
+          setAuthToken(null); // Clear token if invalid
         }
-      } else {
+      } catch (error) {
+        console.error('Error fetching user data in UserContext:', error);
         setUserData(null);
+        setAuthToken(null); // Clear token on error
       }
-      setLoading(false);
-    };
-
-    fetchUserData();
+    } else {
+      setUserData(null);
+    }
+    setLoading(false);
   }, [token]);
+
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData]);
 
   const updateUser = (newUserData) => {
     setUserData(newUserData);
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ userData, loading, updateUser, setUserData, setAuthToken, logout }}>
+    <UserContext.Provider value={{ userData, loading, updateUser, setUserData, setAuthToken, logout, fetchUserData }}>
       {children}
     </UserContext.Provider>
   );

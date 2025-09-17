@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios'); // Need to install axios: npm install axios
 
 // This route fetches external news articles
-router.get('/external-posts', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // Replace 'YOUR_NEWS_API_KEY' with an actual API key from a news API provider (e.g., NewsAPI.org, GNews)
     // You might need to register for a free API key.

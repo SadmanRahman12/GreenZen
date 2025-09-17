@@ -21,11 +21,19 @@ router.get('/profile', auth, async (req, res) => {
 });
 
 // @route   GET api/user/settings
-// @desc    Get user settings
+// @desc    Get user settings (and full profile for context)
 // @access  Private
-router.get('/settings', (req, res) => {
-  // Placeholder for fetching user settings
-  res.json({ notifications: { email: true, push: true }, theme: 'light' });
+router.get('/settings', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password'); // Fetch full user data
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+    res.json(user); // Return the full user object
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @route   PUT api/user/settings
